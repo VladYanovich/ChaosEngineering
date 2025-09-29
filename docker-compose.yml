@@ -1,0 +1,18 @@
+version: "3.12"
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres_chaos
+    restart: always
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: ChaosEngineering
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
