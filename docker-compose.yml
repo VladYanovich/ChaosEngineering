@@ -14,5 +14,16 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  fastapi:
+    build: .
+    container_name: fastapi_chaos
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: "postgresql://postgres:12345678@postgres:5432/ChaosEngineering"
+
 volumes:
   pgdata:
